@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=World
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ World\ here.\r\n\r\n\ @author\ Cesar\ Vasquez\ -\ Ronaldo\ Henao\r\n
+comment1.params=lenght\ width
+comment1.target=World(int,\ int)
+comment2.params=color\ x\ y\ armies
+comment2.target=void\ addNation(java.lang.String,\ int,\ int,\ int)
+comment3.params=locationA\ locationB\ cost
+comment3.target=void\ addRoute(java.lang.String,\ java.lang.String,\ int)
+numComments=4

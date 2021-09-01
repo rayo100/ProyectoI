@@ -6,6 +6,8 @@
  */
 public class World
 {
+    private boolean isVisible;
+    
     public World(int lenght, int width){
     
     }
@@ -40,10 +42,12 @@ public class World
         return false;
     }
     public void makeVisible(){
-    
+        isVisible = true;
+        //draw();
     }
     public void makeInvisible(){
-    
+        //erase();
+        isVisible = false;
     }
     public void finis(){
     

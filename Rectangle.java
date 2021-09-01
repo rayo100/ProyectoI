@@ -31,6 +31,14 @@ public class Rectangle{
         color = "magenta";
         isVisible = false;
     }
+    public Rectangle(int xheight,int ywidth){
+        height = xheight;
+        width = ywidth;
+        xPosition = 50;
+        yPosition = 50;
+        color = "light_gray";
+        isVisible = false;
+    }
     public void modRectangle(int newHeight, int newWidth,
         int newXPos, int newYPos){
             height = newHeight;
@@ -39,7 +47,18 @@ public class Rectangle{
             yPosition = newYPos;
             color = "green";
         }
-
+    public int getYPosition(){
+        return yPosition;
+    }
+    public int getXPosition(){
+        return xPosition;
+    }
+    public int getHeight(){
+        return this.height;
+    }
+    public int getWidth(){
+        return this.width;
+    }
     /**
      * Make this rectangle visible. If it was already visible, do nothing.
      */

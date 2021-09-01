@@ -130,6 +130,8 @@ public class Canvas{
             graphic.setColor(Color.white);
         else if (colorString.equals("gray"))
             graphic.setColor(Color.GRAY);
+        else if (colorString.equals("light_gray"))
+            graphic.setColor(Color.lightGray);
         else
             graphic.setColor(Color.black);
     }
@@ -190,17 +192,19 @@ public class Canvas{
     private class ShapeDescription{
         private Shape shape;
         private String colorString;
-
+        
         public ShapeDescription(Shape shape, String color){
             this.shape = shape;
             colorString = color;
         }
-
+        
         public void draw(Graphics2D graphic){
+            graphic.setStroke(new BasicStroke(3));
             setForegroundColor(colorString);
             graphic.draw(shape);
             graphic.fill(shape);
         }
+       
     }
 
 }

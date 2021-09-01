@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Route
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Route\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=n1\ n2\ cost
+comment1.target=Route(Nation,\ Nation,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Route\r\n
+comment2.params=
+comment2.target=java.lang.String\ getNation1()
+comment3.params=
+comment3.target=java.lang.String\ getNation2()
+comment4.params=locationA\ locationB
+comment4.target=boolean\ searchRoute(java.lang.String,\ java.lang.String)
+comment5.params=
+comment5.target=void\ makeVisible()
+comment6.params=
+comment6.target=void\ makeInvisible()
+comment7.params=rutas
+comment7.target=void\ delRoute(java.util.ArrayList)
+comment8.params=
+comment8.target=void\ draw()
+comment9.params=
+comment9.target=void\ erase()
+numComments=10

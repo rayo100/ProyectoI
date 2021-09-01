@@ -82,7 +82,7 @@ public class World
 
     
 }
-/** Retrospectiva
+/** Retrospectiva Ciclo # 1
  * 1. ¿Cuáles fueron los mini-ciclos definidos? Justifíquenlos.
  *    Los mini-ciclos elegidos fueron:
  *    
@@ -101,9 +101,17 @@ public class World
  *    que se quiere.
  *    
  * 5. ¿Cuál consideran que fue el mayor problema técnico? ¿Qué hicieron para resolverlo?
- *    
+ *    El mayor problema técnico para nosotros fue en cierta parte usar de manera correcta Git, 
+ *    pues se nos ha dificultado trabajar por comandos que no conocemos y demás, pero es algo que
+ *    solucionamos a lo largo del trabajo.
  * 
  * 6. ¿Qué hicieron bien como equipo? ¿Qué se comprometen a hacer para mejorar los resultados?
+ *    Lo que hicimos bien como equipo fue entender el problema, o explicarnos mutuamente si el otro no
+ *    entendia. Aparte de eso realizamos el diseño y codificación de manera ordenada y aportando.
+ *    Para mejorar resultados claramente hay que dedicarle más tiempo, trabajar más unidos, consultar
+ *    dudas con el monitor y profesores que nos puedan ayudar, tambien leer mucho para enteder como 
+ *    funcionan nuevas cosas y demás.
+ *    
  * 7. Considerando las prácticas XP del laboratorio. ¿cuál fue la más útil? ¿por qué? 
  */
 

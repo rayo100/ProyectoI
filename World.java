@@ -78,13 +78,23 @@ public class World
         }
         return null;
     }
-    
-
-    
+    private Route searchRoute(String locationA, String locationB){
+        for (Route i: routes){
+            System.out.print(i.searchRoute(locationA, locationB));
+            if (i.searchRoute(locationA, locationB)){ 
+                return i;
+            }
+        }
+        return null;
+    }
 }
 /** Retrospectiva Ciclo # 1
  * 1. ¿Cuáles fueron los mini-ciclos definidos? Justifíquenlos.
  *    Los mini-ciclos elegidos fueron:
+ *    1.
+ *    2.
+ *    3.
+ *    4.
  *    
  * 2. ¿Cuál es el estado actual del laboratorio en términos de mini-ciclos? ¿por qué?
  *    En el estado actual del laboatorio logramos llegar hasta el mini-ciclo numero
@@ -92,7 +102,7 @@ public class World
  * 3. ¿Cuál fue el tiempo total invertido por cada uno de ustedes? (Horas/Hombre)
  *    El tiempo total invertido para la entrega del primer ciclo de laboratorio es:
  *    (12 Horas - Ronaldo Henao)
- *    (11 Horas - Cesar Vásquez)
+ *    (12 Horas - Cesar Vásquez)
  *    
  * 4. ¿Cuál consideran fue el mayor logro? ¿Por qué?
  *    El mayor logro es hacer de una manera interactiva la interfaz para así lograr entender el problema
@@ -113,6 +123,10 @@ public class World
  *    funcionan nuevas cosas y demás.
  *    
  * 7. Considerando las prácticas XP del laboratorio. ¿cuál fue la más útil? ¿por qué? 
+ *    La practica más util fue la de All production code is pair programmed.
+ *    Ya que codificamos de manera correcta juntos, aportando, diciendo, dando ideas, entre
+ *    otras cosas que se trabajan en equipo.
+ *    
  */
 
 

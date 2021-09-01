@@ -29,12 +29,6 @@ public class Route
         this.cost = cost;
         isVisible = false;
     }
-    public String getNation1(){
-        return nation1.getColor();
-    }
-    public String getNation2(){
-        return nation2.getColor();
-    }
     public boolean searchRoute(String locationA, String locationB){
         if (locationA.equals(this.getNation1()) && locationB.equals(this.getNation2())) return true;
         else if (locationB.equals(this.getNation1()) && locationA.equals(this.getNation2())) return true;
@@ -51,6 +45,12 @@ public class Route
     public void delRoute(ArrayList<Route> rutas){
         makeInvisible();
         rutas.remove(this);
+    }
+    public String getNation1(){
+        return nation1.getColor();
+    }
+    public String getNation2(){
+        return nation2.getColor();
     }
     private void draw(){
         Canvas canvas = Canvas.getCanvas();

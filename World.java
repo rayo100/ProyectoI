@@ -7,11 +7,10 @@ import java.util.*;
  */
 public class World
 {
-    private boolean isVisible;
     private Rectangle world;
     private ArrayList<Nation> nations = new ArrayList<Nation>();
     private ArrayList<Route> routes = new ArrayList<Route>();
-
+    private boolean isVisible;
     public World(int lenght, int width){
         world = new Rectangle(lenght,width);
     }
@@ -79,17 +78,7 @@ public class World
         }
         return null;
     }
-    private Route searchRoute(String locationA, String locationB){
-        for (Route i: routes){
-            System.out.print(i.searchRoute(locationA, locationB));
-            if (i.searchRoute(locationA, locationB)){ 
-                //System.out.print(i.searchRoute(locationA, locationB);
-                
-                return i;
-            }
-        }
-        return null;
-    }
+    
 
     
 }

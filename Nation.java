@@ -39,17 +39,6 @@ public class Nation
     public String getColor(){
         return this.color;
     }
-    private int getPositionY(int yPosition){
-        int total = world.getHeight();
-        if (yPosition == 0) return total - yPosition + 
-            world.getYPosition() - ALTO;
-        return total - yPosition + world.getYPosition();
-    }
-    private int getPositionX(int xPosition){
-        int total = world.getXPosition();
-        if (xPosition == 0) return total + xPosition;
-        return total + xPosition-ANCHO;
-    }
     public void configureVisual(){
         visual.changeColor(color);
         visual.changePosition(xPosition, yPosition);
@@ -81,6 +70,16 @@ public class Nation
         for(Route i: properRoutes) i.delRoute(rutas);
         rutas.removeAll(properRoutes);
     }
-
+    private int getPositionY(int yPosition){
+        int total = world.getHeight();
+        if (yPosition == 0) return total - yPosition + 
+            world.getYPosition() - ALTO;
+        return total - yPosition + world.getYPosition();
+    }
+    private int getPositionX(int xPosition){
+        int total = world.getXPosition();
+        if (xPosition == 0) return total + xPosition;
+        return total + xPosition-ANCHO;
+    }
     
 }

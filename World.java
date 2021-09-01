@@ -83,5 +83,29 @@ public class World
     
 }
 /** Retrospectiva
- * Diseñar en Astah las clases, metodos y atributos.
+ * 1. ¿Cuáles fueron los mini-ciclos definidos? Justifíquenlos.
+ *    Los mini-ciclos elegidos fueron:
+ *    
+ * 2. ¿Cuál es el estado actual del laboratorio en términos de mini-ciclos? ¿por qué?
+ *    En el estado actual del laboatorio logramos llegar hasta el mini-ciclo numero
+ *    
+ * 3. ¿Cuál fue el tiempo total invertido por cada uno de ustedes? (Horas/Hombre)
+ *    El tiempo total invertido para la entrega del primer ciclo de laboratorio es:
+ *    (12 Horas - Ronaldo Henao)
+ *    (11 Horas - Cesar Vásquez)
+ *    
+ * 4. ¿Cuál consideran fue el mayor logro? ¿Por qué?
+ *    El mayor logro es hacer de una manera interactiva la interfaz para así lograr entender el problema
+ *    de una mejor manera donde lo asimilamos mucho con el tema de grafos. Creemos que entendiendo bien 
+ *    graficamente lo que está sucediendo podemos codificar de una buena forma probando y resolviendo lo
+ *    que se quiere.
+ *    
+ * 5. ¿Cuál consideran que fue el mayor problema técnico? ¿Qué hicieron para resolverlo?
+ *    
+ * 
+ * 6. ¿Qué hicieron bien como equipo? ¿Qué se comprometen a hacer para mejorar los resultados?
+ * 7. Considerando las prácticas XP del laboratorio. ¿cuál fue la más útil? ¿por qué? 
  */
+
+
+

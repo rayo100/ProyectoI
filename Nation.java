@@ -14,7 +14,8 @@ public class Nation
     private int nArmies;
     private Rectangle world;
     private Rectangle visual;
-    private ArrayList<Route> properRoutes = new ArrayList<Route>(); 
+    private ArrayList<Route> properRoutes = new ArrayList<Route>();
+    private boolean conquered;
     public Nation(String color, int x, int y, int nArmies, Rectangle world){
         this.color = color;
         this.world = world;
@@ -51,6 +52,9 @@ public class Nation
     }
     public void addArmy(){
         nArmies ++;
+    }
+    public void delArmy(){
+        nArmies --;
     }
     public void addRoute(Route ruta, ArrayList<Route> rutas,Nation nation2){
         rutas.add(ruta);

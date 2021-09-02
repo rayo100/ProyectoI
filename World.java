@@ -11,23 +11,36 @@ public class World
     private ArrayList<Nation> nations = new ArrayList<Nation>();
     private ArrayList<Route> routes = new ArrayList<Route>();
     private boolean isVisible;
+    private boolean completado; 
     public World(int lenght, int width){
         world = new Rectangle(lenght,width);
+        completado = true;
     }
     public void addNation(String color, int x, int y, int armies){
-        Nation newNation = new Nation(color, x, y, armies, world);
-        nations.add(newNation);
+        if (!nations.contains(searchNation(color))){
+            Nation newNation = new Nation(color, x, y, armies, world);
+            nations.add(newNation);
+        }
+        completado = false;
     }
    
     public void addRoute(String locationA, String locationB, int cost){
-        Nation nation1 = searchNation(locationA);
-        Nation nation2 = searchNation(locationB);
-        Route route = new Route(nation1,nation2,cost);
-        nation1.addRoute(route,routes,nation2);       
+        if(!routes.contains(searchRoute(locationA, locationB))){
+            Nation nation1 = searchNation(locationA);
+            Nation nation2 = searchNation(locationB);
+            Route route = new Route(nation1,nation2,cost);
+            nation1.addRoute(route,routes,nation2);
+            completado = true;
+        }
+        completado = false;
     }
     public void putArmy(String location){
-        Nation moreArmy = searchNation(location);
-        moreArmy.addArmy();
+        if (!nations.contains(searchNation(location))){
+            Nation moreArmy = searchNation(location);
+            moreArmy.addArmy();
+            completado = true;
+        }
+        completado = false;
     }
     public void delNation(String color){
         Nation nationDeleted = searchNation(color);
@@ -39,7 +52,8 @@ public class World
         deletedRoute.delRoute(routes);
     }
     public void removeArmy(String location){
-    
+        Nation minusArmy = searchNation(location);
+        minusArmy.delArmy();
     }
     public void moveArmyOneRoute(String locationA, String locationB){
     
@@ -58,19 +72,20 @@ public class World
         world.makeVisible();
         for(Route i: routes) i.makeVisible();
         for(Nation i: nations) i.makeVisible();
-        
+        completado = true;
     }
     public void makeInvisible(){
         world.makeInvisible();
         for(Nation i: nations)i.makeInvisible();
         for(Route i: routes) i.makeInvisible();
         isVisible = false;
+        completado = true;
     }
     public void finish(){
-    
+        System.exit(0);
     }
     public boolean ok(){
-        return false;
+        return completado;
     }
     private Nation searchNation(String color){
         for (Nation i: nations){
@@ -80,7 +95,6 @@ public class World
     }
     private Route searchRoute(String locationA, String locationB){
         for (Route i: routes){
-            System.out.print(i.searchRoute(locationA, locationB));
             if (i.searchRoute(locationA, locationB)){ 
                 return i;
             }

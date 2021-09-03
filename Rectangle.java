@@ -31,6 +31,12 @@ public class Rectangle{
         color = "magenta";
         isVisible = false;
     }
+    /**
+     * This method create a new rectangle at default position with 
+     * default color and with optional height and width
+     * @ param xheight, xheight is the heigt of the world rectangle
+     * @ param ywidht, ywidht is the widht of the world rectangle
+     */
     public Rectangle(int xheight,int ywidth){
         height = xheight;
         width = ywidth;
@@ -39,23 +45,45 @@ public class Rectangle{
         color = "light_gray";
         isVisible = false;
     }
-    public void modRectangle(int newHeight, int newWidth,
-        int newXPos, int newYPos){
-            height = newHeight;
-            width = newWidth;
-            xPosition = newXPos;
-            yPosition = newYPos;
-            color = "green";
-        }
+    /**
+     * This method modifies a rectangle and if position
+     * @ param newHeight, newHeight is the heigt of the new rectangle
+     * @ param newWidth, newWidth is the widht of the new rectangle
+     * @ param newXPos, newXPos is the X position of the new rectangle
+     * @ param newYPos, newYPos is the Y position of the new rectangle
+     */
+    public void modRectangle(int newHeight, int newWidth, int newXPos, int newYPos){
+        height = newHeight;
+        width = newWidth;
+        xPosition = newXPos;
+        yPosition = newYPos;
+        color = "green";
+    }
+    /**
+     * This method returns the Y coordinate of the rectagle
+     * @ return yPosition, yPosition is the Y coordinate of the rectagle
+     */    
     public int getYPosition(){
         return yPosition;
     }
+    /**
+     * This method returns the Y coordinate of the rectagle
+     * @ return yPosition, yPosition is the Y coordinate of the rectagle
+     */
     public int getXPosition(){
         return xPosition;
     }
+    /**
+     * This method returns the height of the rectagle
+     * @ return height, height is the height of the rectagle
+     */
     public int getHeight(){
         return this.height;
     }
+    /**
+     * This method returns the width of the rectagle
+     * @ return width, width is the width of the rectagle
+     */
     public int getWidth(){
         return this.width;
     }

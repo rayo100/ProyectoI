@@ -1,9 +1,10 @@
 import java.util.*;
 /**
- * Write a description of class World here.
+ * The world class have on its canvas the nations 
+ * with their armies and routes berween them
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (August 31, 2021)
+ * @version 1.0  (September 2nd, 2021)
  */
 public class World
 {
@@ -12,10 +13,23 @@ public class World
     private ArrayList<Route> routes = new ArrayList<Route>();
     private boolean isVisible;
     private boolean completado; 
+    /**
+     * Create a rectangle given the height and width
+     * @ param lenght, lenght is the lenght of the rectangle
+     * @ param width, width is the width of the rectangle
+     */
     public World(int lenght, int width){
         world = new Rectangle(lenght,width);
         completado = true;
     }
+    /**
+     * This method adds a nation
+     * @ param color, color is the color of the nation
+     * @ param x, x is the x position for the nation is rectangle
+     * @ param y, y is the y position for the nation is rectangle
+     * @ param armies, armies is the number of armies that 
+     * the nation has at the beginning
+     */
     public void addNation(String color, int x, int y, int armies){
         if (!nations.contains(searchNation(color))){
             Nation newNation = new Nation(color, x, y, armies, world);
@@ -23,7 +37,12 @@ public class World
         }
         completado = false;
     }
-   
+    /**
+     * This method adds a route between two nations and gives a cost
+     * @ param locationA, locationA is the location of the nation one
+     * @ param locationB, locationB is the location of the nation two
+     * @ param cost, cost is the cost of traveling throungh said route
+     */
     public void addRoute(String locationA, String locationB, int cost){
         if(!routes.contains(searchRoute(locationA, locationB))){
             Nation nation1 = searchNation(locationA);
@@ -34,6 +53,10 @@ public class World
         }
         completado = false;
     }
+    /**
+     * This method puts an army in a nation
+     * @ param location, location is the location of the nation 
+     */
     public void putArmy(String location){
         if (!nations.contains(searchNation(location))){
             Nation moreArmy = searchNation(location);
@@ -42,31 +65,66 @@ public class World
         }
         completado = false;
     }
+    /**
+     * This method eliminates a nation
+     * @ param color, color is the identifier of the nation
+     * so we delete it
+     */
     public void delNation(String color){
         Nation nationDeleted = searchNation(color);
         nationDeleted.delNation(routes);
         nations.remove(nationDeleted);
     }
+    /**
+     * This method eliminates a route 
+     * @ param locationA, locationA is the location of the nation one
+     * @ param locationB, locationB is the location of the nation two
+     */
     public void delStreet(String locationA, String locationB){
         Route deletedRoute = searchRoute(locationA, locationB);
         deletedRoute.delRoute(routes);
     }
+    /**
+     * This method decreases the number of armies a nation has by one
+     * @ param location, location is the location of the nation para
+     * borrar uno de sus ejercitos
+     */
     public void removeArmy(String location){
         Nation minusArmy = searchNation(location);
         minusArmy.delArmy();
     }
+    /**
+     * This method moves an army from one to another
+     * @ param locationA, locationA is the location of the nation one
+     * @ param locationB, locationB is the location of the nation two
+     */
     public void moveArmyOneRoute(String locationA, String locationB){
     
     }
+    /**
+     * This method returns the nations that are conquered
+     * @ returns
+     */
     public String[] conqueredNations(){
         return null;
     }
+    /**
+     * This method returns returns the total cost when finally cinquering the world
+     * @ return  
+     */
     public int payments(){
         return 0;
     }
+    /**
+     * This method returns if the world has been conquered or not
+     * @ return false or true 
+     */
     public boolean conquer(){
         return false;
     }
+    /**
+     * This method makes the world visible
+     */
     public void makeVisible(){
         isVisible = true;
         world.makeVisible();
@@ -74,6 +132,9 @@ public class World
         for(Nation i: nations) i.makeVisible();
         completado = true;
     }
+    /**
+     * This method makes the world invisible
+     */
     public void makeInvisible(){
         world.makeInvisible();
         for(Nation i: nations)i.makeInvisible();
@@ -81,9 +142,16 @@ public class World
         isVisible = false;
         completado = true;
     }
+    /**
+     * This method ends whatever operation is being performed
+     */
     public void finish(){
         System.exit(0);
     }
+    /**
+     * This method returns if the last action could be done or not
+     * @ return completado, completado is the last actión executed or not
+     */
     public boolean ok(){
         return completado;
     }

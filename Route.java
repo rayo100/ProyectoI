@@ -80,6 +80,10 @@ public class Route
     public String getNation2(){
         return nation2.getColor();
     }
+    /**
+     * This methos returns the cost of the route
+     * @ return cost, cost is the cost of the route
+     */
     public int getCost(){
         return this.cost;
     }

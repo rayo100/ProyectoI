@@ -16,6 +16,8 @@ public class World
     private boolean completado;
     private boolean conquered;
     private int costs;
+    
+    //Start mini-cycle one
     /**
      * Create a rectangle given the height and width
      * @ param lenght, lenght is the lenght of the rectangle
@@ -26,6 +28,9 @@ public class World
         costs = 0;
         completado = true;
     }
+    //End mini-cycle one
+    
+    //Start mini-cycle two
     /**
      * This method adds a nation
      * @ param color, color is the color of the nation
@@ -64,6 +69,9 @@ public class World
             completado = false;
         }
     }
+    // End mini-cycle two
+    
+    // Start mini-cycle three
     /**
      * This method puts an army in a nation
      * @ param location, location is the location of the nation 
@@ -113,6 +121,9 @@ public class World
             completado = false;
         }
     }
+    // End mini-cycle three
+    
+    // Start mini-cycle four
     /**
      * This method eliminates a nation
      * @ param color, color is the identifier of the nation
@@ -148,8 +159,9 @@ public class World
             completado = false;
         }
     }
+    // End mini-cycle four
     
-    
+    // Start mini-cycle five
     /**
      * This method returns the nations that are conquered
      * @ returns
@@ -181,6 +193,9 @@ public class World
         if (isVisible) makeVisible();
         return true;
     }
+    // End mini-cycle five
+    
+    // Start mini-cycle six
     /**
      * This method makes the world visible
      */
@@ -201,6 +216,9 @@ public class World
         isVisible = false;
         completado = true;
     }
+    // End mini-cycle six
+    
+    // Start mini-cycle seven
     /**
      * This method ends whatever operation is being performed
      */
@@ -214,15 +232,30 @@ public class World
     public boolean ok(){
         return completado;
     }
+    /// End mini-cycle seven
+    /*
+     * This method displays the message if an operation 
+     * is not completed.
+     * @ param message, message is the message it will show
+     */
     private void presentMessage(String message){
         if (isVisible) JOptionPane.showMessageDialog(null, message);
     }
+    /*
+     * This method searches for a nation by color
+     * @ param color, color is the color for search the nation
+     */
     private Nation searchNation(String color){
         for (Nation i: nations){
             if (i.getColor().equals(color)) return i;
         }
         return null;
     }
+    /*
+     * This method lloks for a route thrugh their nations
+     * @ param locationA, locationA is the location of the nation one
+     * @ param locationB, locationB is the location of the nation two
+     */
     private Route searchRoute(String locationA, String locationB){
         for (Route i: routes){
             if (i.searchRoute(locationA, locationB)){ 
@@ -235,18 +268,23 @@ public class World
 /** Retrospectiva Ciclo # 1
  * 1. ¿Cuáles fueron los mini-ciclos definidos? Justifíquenlos.
  *    Los mini-ciclos elegidos fueron:
- *    1.
- *    2.
- *    3.
- *    4.
+ *    1. Construción: con estos construimos el lienzo del mundo
+ *    2. Agragación: con estos podeos adicionar nuevos elementos al lienzo del mundo
+ *    3. Modificación: con estos podemos modificar lo que se haya agregado al lienzo del mundo
+ *    4. Eliminación: con estos pidemos eliminar los que se hayan agregado al lienzo del mundo
+ *    5. Retornación: con esto podemos conseguir datos 
+ *    6. Visualización: con estos podemos ver o no el lienzo del mundo
+ *    7. Sistema: con estos podemos verificar cada accion del sistema
  *    
  * 2. ¿Cuál es el estado actual del laboratorio en términos de mini-ciclos? ¿por qué?
- *    En el estado actual del laboatorio logramos llegar hasta el mini-ciclo numero
+ *    En el estado actual del laboatorio logramos llegar hasta el mini-ciclo numero 7.
+ *    Es decir, que hemos finalizado por completo el primer ciclo de entrega del 
+ *    proyecto the conquer world.
  *    
  * 3. ¿Cuál fue el tiempo total invertido por cada uno de ustedes? (Horas/Hombre)
  *    El tiempo total invertido para la entrega del primer ciclo de laboratorio es:
- *    (12 Horas - Ronaldo Henao)
- *    (12 Horas - Cesar Vásquez)
+ *    (15 Horas - Ronaldo Henao)
+ *    (15 Horas - Cesar Vásquez)
  *    
  * 4. ¿Cuál consideran fue el mayor logro? ¿Por qué?
  *    El mayor logro es hacer de una manera interactiva la interfaz para así lograr entender el problema

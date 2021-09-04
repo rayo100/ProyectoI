@@ -7,8 +7,6 @@ import java.awt.*;
  * @version 1.0  (15 July 2000)()
  */
 
-
- 
 public class Rectangle{
 
     public static int EDGES = 4;
@@ -96,7 +94,6 @@ public class Rectangle{
         isVisible = true;
         draw();
     }
-    
     /**
      * Make this rectangle invisible. If it was already invisible, do nothing.
      */
@@ -104,35 +101,30 @@ public class Rectangle{
         erase();
         isVisible = false;
     }
-    
     /**
      * Move the rectangle a few pixels to the right.
      */
     public void moveRight(){
         moveHorizontal(20);
     }
-
     /**
      * Move the rectangle a few pixels to the left.
      */
     public void moveLeft(){
         moveHorizontal(-20);
     }
-
     /**
      * Move the rectangle a few pixels up.
      */
     public void moveUp(){
         moveVertical(-20);
     }
-
     /**
      * Move the rectangle a few pixels down.
      */
     public void moveDown(){
         moveVertical(20);
     }
-
     /**
      * Move the rectangle horizontally.
      * @param distance the desired distance in pixels
@@ -214,14 +206,27 @@ public class Rectangle{
         color = newColor;
         draw();
     }
-    public void changePosition (int newX, int newY){
+    /**
+     * This method changes the positions of the rectangle
+     * @ param newX, newX is the new X position of the rectangle
+     * @ param newY, newY is the new Y position of the rectangle
+     */
+    public void changePosition(int newX, int newY){
         xPosition = newX;
         yPosition = newY;
         draw();
     }
+    /**
+     * This method returns the string
+     * @ return str, str is the string I want to get
+     */
     public String getString(){
         return this.str;
     }
+    /**
+     * This method places a new string
+     * @ param newString, newString is the new chain that you want to place
+     */
     public void setString(String newString){
         this.str = newString;
     }

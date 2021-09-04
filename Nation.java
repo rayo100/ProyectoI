@@ -59,12 +59,24 @@ public class Nation
     public int getXPos(){
         return this.xPosition+ANCHO/2;
     }
+    /**
+     * This method returns the number of armed
+     * @ return nArmies, nArmies is the number of armed
+     */
     public int getArmies(){
         return nArmies;
     }
+    /**
+     * This method returns whether a natio is conquered or not
+     * @ return conquered, conquered say if it is true or false
+     */
     public boolean conquest(){
         return this.conquered;
     }
+    /**
+     * This method places a nation as conquered
+     * @ param conquista, conquista is the nation to conquer
+     */
     public void setConquest(boolean conquista){
         this.conquered = conquista;
         update();
@@ -99,6 +111,9 @@ public class Nation
         }
         else marca.changeColor(color);
     }
+    /**
+     * This method updates the nation's data
+     */
     public void update(){        
         configureVisual();
         if (isVisible) makeVisible();

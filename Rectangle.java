@@ -19,6 +19,8 @@ public class Rectangle{
     private int yPosition;
     private String color;
     private boolean isVisible;
+    private int[] positions;
+    private String str = "";
 
     /**
      * Create a new rectangle at default position with default color.
@@ -217,6 +219,12 @@ public class Rectangle{
         yPosition = newY;
         draw();
     }
+    public String getString(){
+        return this.str;
+    }
+    public void setString(String newString){
+        this.str = newString;
+    }
     /*
      * Draw the rectangle with current specifications on screen.
      */
@@ -224,9 +232,10 @@ public class Rectangle{
     private void draw() {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
+            positions = new int[]{xPosition,yPosition};
             canvas.draw(this, color,
                 new java.awt.Rectangle(xPosition, yPosition, 
-                                       width, height));
+                                       width, height),str,positions);
             canvas.wait(10);
         }
     }

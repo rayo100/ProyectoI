@@ -16,8 +16,10 @@ public class Nation
     private int nArmies;
     private Rectangle world;
     private Rectangle visual;
+    private Rectangle marca = new Rectangle(ALTO/2,ANCHO/2);
     private ArrayList<Route> properRoutes = new ArrayList<Route>();
     private boolean conquered;
+    private boolean isVisible;
     /**
      * Creates a nation with an army number and is 
      * identified by a unique color
@@ -28,7 +30,9 @@ public class Nation
         xPosition = getPositionX(x);
         yPosition = getPositionY(y);
         this.nArmies = nArmies;
+        isVisible = false;
         visual = new Rectangle(ANCHO,ALTO);
+        conquered = false;
         configureVisual();
     }
     /**
@@ -55,6 +59,16 @@ public class Nation
     public int getXPos(){
         return this.xPosition+ANCHO/2;
     }
+    public int getArmies(){
+        return nArmies;
+    }
+    public boolean conquest(){
+        return this.conquered;
+    }
+    public void setConquest(boolean conquista){
+        this.conquered = conquista;
+        update();
+    }
     /**
      * This method returns the y coordinate of the
      * nation which must be within the world canvas
@@ -77,17 +91,31 @@ public class Nation
     public void configureVisual(){
         visual.changeColor(color);
         visual.changePosition(xPosition, yPosition);
+        String nArmy = Integer.toString(this.nArmies);
+        visual.setString(nArmy);
+        if (conquered){            
+            marca.changeColor("black");
+            marca.changePosition(xPosition+5, yPosition+5);
+        }
+        else marca.changeColor(color);
+    }
+    public void update(){        
+        configureVisual();
+        if (isVisible) makeVisible();
     }
     /**
      * This method makes the nation visible
      */
     public void makeVisible(){
+        isVisible = true;
         visual.makeVisible();
+        if(conquered)marca.makeVisible();
     }
     /**
      * This method makes the nation invisible
      */
     public void makeInvisible(){
+        isVisible = false;
         visual.makeInvisible();
     }
     /**
@@ -95,12 +123,14 @@ public class Nation
      */
     public void addArmy(){
         nArmies ++;
+        update();
     }
     /**
      * This method removes an army from a nation
      */
     public void delArmy(){
         nArmies --;
+        update();
     }
     /**
      * This method adds a route of the nation with another
@@ -119,14 +149,6 @@ public class Nation
      */
     public void addRoute(Route ruta){
         if (!properRoutes.contains(ruta))properRoutes.add(ruta);
-    }
-    /**
-     * This method makes visible the armies that the nation has
-     */
-    public void visualArmies(){
-        //Falta hacer la visualizacion de los ejercitos
-        //Canvas canvas = Canvas.getCanvas();
-        //canvas.draw(this,color,new Line2D.Double(xx1,yy1,xx2,yy2));
     }
     /**
      * This method removes a nation from the world canvas

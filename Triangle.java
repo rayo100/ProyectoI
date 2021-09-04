@@ -17,7 +17,8 @@ public class Triangle{
     private int yPosition;
     private String color;
     private boolean isVisible;
-
+    private String str = "";
+    private int[] positions;
     /**
      * Create a new triangle at default position with default color.
      */
@@ -200,7 +201,7 @@ public class Triangle{
             Canvas canvas = Canvas.getCanvas();
             int[] xpoints = { xPosition, xPosition + (width/2), xPosition - (width/2) };
             int[] ypoints = { yPosition, yPosition + height, yPosition + height };
-            canvas.draw(this, color, new Polygon(xpoints, ypoints, 3));
+            canvas.draw(this, color, new Polygon(xpoints, ypoints, 3),str,positions);
             canvas.wait(10);
         }
     }

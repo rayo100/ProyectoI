@@ -92,10 +92,10 @@ public class Canvas{
      // Note: this is a slightly backwards way of maintaining the shape
      // objects. It is carefully designed to keep the visible shape interfaces
      // in this project clean and simple for educational purposes.
-    public void draw(Object referenceObject, String color, Shape shape){
+    public void draw(Object referenceObject, String color, Shape shape,String str,int[] positions){
         objects.remove(referenceObject);   // just in case it was already there
         objects.add(referenceObject);      // add at the end
-        shapes.put(referenceObject, new ShapeDescription(shape, color));
+        shapes.put(referenceObject, new ShapeDescription(shape, color,str,positions));
         redraw();
     }
  
@@ -155,8 +155,8 @@ public class Canvas{
      */
     private void redraw(){
         erase();
-        for(Iterator i=objects.iterator(); i.hasNext(); ) {
-                       shapes.get(i.next()).draw(graphic);
+        for(Iterator i=objects.iterator(); i.hasNext();) {
+            shapes.get(i.next()).draw(graphic);
         }
         canvas.repaint();
     }
@@ -192,19 +192,26 @@ public class Canvas{
     private class ShapeDescription{
         private Shape shape;
         private String colorString;
-        
-        public ShapeDescription(Shape shape, String color){
+        private String str;
+        private int[] positions;
+        public ShapeDescription(Shape shape, String color,String str,
+        int[] positions){
             this.shape = shape;
             colorString = color;
-        }
-        
+            this.str = str;
+            this.positions = positions;
+        }        
         public void draw(Graphics2D graphic){
-            graphic.setStroke(new BasicStroke(3));
+            graphic.setStroke(new BasicStroke(2));
             setForegroundColor(colorString);
             graphic.draw(shape);
-            graphic.fill(shape);
+            graphic.fill(shape);           
+            if (!str.isBlank()){
+                graphic.drawString(str, positions[0], positions[1]-3);
+                graphic.setFont(new Font("Arial", Font.BOLD,16));
+            }
         }
-       
+
     }
 
 }

@@ -17,7 +17,8 @@ public class Circle{
     private int yPosition;
     private String color;
     private boolean isVisible;
-    
+    private String str = "";
+    private int[] positions;
 
     public Circle(){
         diameter = 30;
@@ -45,7 +46,7 @@ public class Circle{
             Canvas canvas = Canvas.getCanvas();
             canvas.draw(this, color, 
                 new Ellipse2D.Double(xPosition, yPosition, 
-                diameter, diameter));
+                diameter, diameter),str,positions);
             canvas.wait(10);
         }
     }

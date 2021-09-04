@@ -1,4 +1,5 @@
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  * The world class have on its canvas the nations 
  * with their armies and routes berween them
@@ -12,7 +13,9 @@ public class World
     private ArrayList<Nation> nations = new ArrayList<Nation>();
     private ArrayList<Route> routes = new ArrayList<Route>();
     private boolean isVisible;
-    private boolean completado; 
+    private boolean completado;
+    private boolean conquered;
+    private int costs;
     /**
      * Create a rectangle given the height and width
      * @ param lenght, lenght is the lenght of the rectangle
@@ -20,6 +23,7 @@ public class World
      */
     public World(int lenght, int width){
         world = new Rectangle(lenght,width);
+        costs = 0;
         completado = true;
     }
     /**
@@ -35,7 +39,10 @@ public class World
             Nation newNation = new Nation(color, x, y, armies, world);
             nations.add(newNation);
         }
-        completado = false;
+        else{
+            presentMessage("La nacion ya se encuentra");
+            completado = false;
+        }
     }
     /**
      * This method adds a route between two nations and gives a cost
@@ -51,6 +58,8 @@ public class World
             nation1.addRoute(route,routes,nation2);
             completado = true;
         }
+        presentMessage
+        ("La ruta ya se encuentra o las naciones no fueron localizadas");
         completado = false;
     }
     /**
@@ -58,31 +67,13 @@ public class World
      * @ param location, location is the location of the nation 
      */
     public void putArmy(String location){
-        if (!nations.contains(searchNation(location))){
+        if (nations.contains(searchNation(location))){
             Nation moreArmy = searchNation(location);
             moreArmy.addArmy();
             completado = true;
         }
+        presentMessage("La nacion no fue encontrada");
         completado = false;
-    }
-    /**
-     * This method eliminates a nation
-     * @ param color, color is the identifier of the nation
-     * so we delete it
-     */
-    public void delNation(String color){
-        Nation nationDeleted = searchNation(color);
-        nationDeleted.delNation(routes);
-        nations.remove(nationDeleted);
-    }
-    /**
-     * This method eliminates a route 
-     * @ param locationA, locationA is the location of the nation one
-     * @ param locationB, locationB is the location of the nation two
-     */
-    public void delStreet(String locationA, String locationB){
-        Route deletedRoute = searchRoute(locationA, locationB);
-        deletedRoute.delRoute(routes);
     }
     /**
      * This method decreases the number of armies a nation has by one
@@ -90,8 +81,16 @@ public class World
      * borrar uno de sus ejercitos
      */
     public void removeArmy(String location){
-        Nation minusArmy = searchNation(location);
-        minusArmy.delArmy();
+        if (nations.contains(searchNation(location))){
+            Nation minusArmy = searchNation(location);
+            if (minusArmy.getArmies() > 0){
+                minusArmy.delArmy();
+                completado = true;
+            }
+            else completado = false;            
+        }
+        presentMessage("No hay armadas o la nacion no fue encontrada");
+        completado = false;
     }
     /**
      * This method moves an army from one to another
@@ -99,28 +98,86 @@ public class World
      * @ param locationB, locationB is the location of the nation two
      */
     public void moveArmyOneRoute(String locationA, String locationB){
-    
+        Nation n1 = searchNation(locationA);
+        Nation n2 = searchNation(locationB);
+        if(routes.contains(searchRoute(locationA, locationB))){
+            n1.addArmy();
+            n2.delArmy();
+            Route routeCost = searchRoute(locationA, locationB);
+            costs += routeCost.getCost();
+        }
+        else{
+            presentMessage("La ruta no ha sido encontrada");
+            completado = false;
+        }
     }
+    /**
+     * This method eliminates a nation
+     * @ param color, color is the identifier of the nation
+     * so we delete it
+     */
+    public void delNation(String color){
+        if(nations.contains(searchNation(color))){
+            Nation nationDeleted = searchNation(color);
+            nationDeleted.delNation(routes);
+            nations.remove(nationDeleted);
+            completado = true;
+        }
+        else{
+            presentMessage("La nacion no fue encontrada");
+            completado = false;
+        }
+        
+        
+    }
+    /**
+     * This method eliminates a route 
+     * @ param locationA, locationA is the location of the nation one
+     * @ param locationB, locationB is the location of the nation two
+     */
+    public void delStreet(String locationA, String locationB){
+        if(routes.contains(searchRoute(locationA, locationB))){
+            Route deletedRoute = searchRoute(locationA, locationB);
+            deletedRoute.delRoute(routes);
+            completado = true;
+        }
+        else{
+            presentMessage("La ruta no fue encontrada");
+            completado = false;
+        }
+    }
+    
+    
     /**
      * This method returns the nations that are conquered
      * @ returns
      */
     public String[] conqueredNations(){
+        for (Nation i: nations){
+            i.setConquest(true);
+        }
         return null;
+        //Falta
     }
     /**
-     * This method returns returns the total cost when finally cinquering the world
+     * This method returns returns the total cost when finally conquering the world
      * @ return  
      */
     public int payments(){
-        return 0;
+        return this.costs;
     }
     /**
      * This method returns if the world has been conquered or not
      * @ return false or true 
      */
     public boolean conquer(){
-        return false;
+        for(Nation i: nations){
+            if(!i.conquest()) return false;
+        }
+        world.changeColor("gray");
+        world.setString("El mundo ha sido conquistado");
+        if (isVisible) makeVisible();
+        return true;
     }
     /**
      * This method makes the world visible
@@ -154,6 +211,9 @@ public class World
      */
     public boolean ok(){
         return completado;
+    }
+    private void presentMessage(String message){
+        if (isVisible) JOptionPane.showMessageDialog(null, message);
     }
     private Nation searchNation(String color){
         for (Nation i: nations){

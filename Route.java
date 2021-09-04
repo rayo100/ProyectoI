@@ -17,6 +17,8 @@ public class Route
     private Nation nation2;
     private int cost;
     private boolean isVisible;
+    private String str = "";
+    private int[] positions;
     /**
      * Create a route between the nations with
      * their default positions.
@@ -78,13 +80,16 @@ public class Route
     public String getNation2(){
         return nation2.getColor();
     }
+    public int getCost(){
+        return this.cost;
+    }
     /*
      * This method draws the route of two
      * nations on the canvas of the world
      */
     private void draw(){
         Canvas canvas = Canvas.getCanvas();
-        canvas.draw(this,"black",new Line2D.Double(x1,y1,x2,y2));
+        canvas.draw(this,"black",new Line2D.Double(x1,y1,x2,y2),str,positions);
     }
     /*
      * This method erases the route of two

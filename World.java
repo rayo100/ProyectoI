@@ -58,9 +58,11 @@ public class World
             nation1.addRoute(route,routes,nation2);
             completado = true;
         }
-        presentMessage
-        ("La ruta ya se encuentra o las naciones no fueron localizadas");
-        completado = false;
+        else{
+            presentMessage
+            ("La ruta ya se encuentra o las naciones no fueron localizadas");
+            completado = false;
+        }
     }
     /**
      * This method puts an army in a nation
